@@ -1,0 +1,54 @@
+<p>template-control-flow works!</p>
+
+@if (loadingData$ | async; as data){
+  <ul>
+    @for (item of data; track item) {
+      <li>{{item}}</li>
+    }
+  </ul>
+} @else {
+  Carregando...
+}
+
+
+<ul>
+  @for (item of loadingData$ | async; track item) {
+    <li>{{item}}</li>
+  }
+</ul>
+
+
+
+<ul>
+  @for (item of items; track item.name){
+    <li>{{item.name}}</li>
+  } @empty {
+    Sem dados na lista
+  }
+</ul>
+
+
+
+<ul>
+  <ng-container *ngIf="items.length === 0; else itemsExist">
+    <li>    Sem dados na lista    </li>
+  </ng-container>
+  <ng-template #itemsExist>
+    <ng-container *ngFor="let item of items">
+      <li>{{item.name}}</li>
+    </ng-container>
+  </ng-template>
+</ul>
+
+
+@switch (condition) {
+  @case ('A'){
+    <p>A letra é A</p>
+  }
+  @case ('B'){
+    <p>A letra é B</p>
+  }
+  @default {
+    <p>Os dados não foram encontrados</p>
+  }
+}
