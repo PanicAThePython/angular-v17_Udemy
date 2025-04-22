@@ -1,5 +1,5 @@
 import { AsyncPipe, CommonModule, NgFor, NgIf, NgSwitch } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Observable, delay, of } from 'rxjs';
 
 @Component({
@@ -9,7 +9,7 @@ import { Observable, delay, of } from 'rxjs';
   styleUrl: './template-control-flow.component.scss'
 })
 export class TemplateControlFlowComponent {
-  public condition = 'A';
+  public condition = signal('A');
   public items: Array<{ name: string }> = [{name: "Natália"}];
   public loadingData$: Observable<string[]> = of([
     "item1",

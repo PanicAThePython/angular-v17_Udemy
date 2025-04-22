@@ -1,0 +1,12 @@
+<p>template-deferrable-views works!</p>
+
+@defer (on interaction) {
+  <app-new-component />
+} @placeholder(minimum 5s) {
+  <p>Mostrar antes de carregar algo</p>
+} @loading(after 150ms; minimum 5s) {
+  <p>loading...</p>
+} @error {
+  <p>carregamento de componente falhou</p>
+}
+
